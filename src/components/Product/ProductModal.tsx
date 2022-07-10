@@ -47,7 +47,7 @@ const ProductModal: FC<any> = ({ setIsOpen }) => {
                 method: 'POST',
                 body: formData,
             }
-        ).then((r) => r.json());
+        ).then(async (r) => await r.json());
 
         return data;
     };
