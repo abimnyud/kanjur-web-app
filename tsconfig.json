@@ -1,20 +1,35 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true
-  },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+    "compilerOptions": {
+        "baseUrl": ".",
+        "target": "es6",
+        "lib": ["dom", "dom.iterable", "esnext"],
+        "allowJs": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "noEmit": true,
+        "esModuleInterop": true,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "jsx": "preserve",
+        "incremental": true,
+        "paths": {
+            "@components/*": ["src/components/*"],
+            "@class/*": ["src/utils/class/*"],
+            "@middlewares/*": ["src/utils/middlewares/*"],
+            "@functions/*": ["src/utils/functions/*"],
+            "@connection": ["src/utils/db/connection"],
+            "@models/*": ["src/utils/db/models/*"],
+            "@/types/*": ["src/utils/types/*"],
+            "@hooks/*": ["src/hooks/*"],
+            "@contexts/*": ["src/contexts/*"],
+            "@lib/*": ["src/lib/*"]
+        },
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
+    },
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+    "exclude": ["node_modules"]
 }

@@ -1,24 +1,47 @@
 {
-  "name": "kajur-web-app",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "next": "12.2.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
-  },
-  "devDependencies": {
-    "@types/node": "18.0.0",
-    "@types/react": "18.0.14",
-    "@types/react-dom": "18.0.5",
-    "eslint": "8.18.0",
-    "eslint-config-next": "12.2.0",
-    "typescript": "4.7.4"
-  }
+    "name": "kanjur-web-app",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "argon2": "^0.28.5",
+        "cloudinary": "^1.30.0",
+        "cookie": "^0.5.0",
+        "cookies-next": "^2.1.1",
+        "jsonwebtoken": "^8.5.1",
+        "moment": "^2.29.4",
+        "next": "12.2.0",
+        "path-to-regexp": "^6.2.1",
+        "pg": "^8.7.3",
+        "pg-hstore": "^2.3.4",
+        "qs": "^6.11.0",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "reflect-metadata": "^0.1.13",
+        "sequelize": "^6.21.2",
+        "sequelize-typescript": "^2.1.3",
+        "sharp": "^0.30.7",
+        "swr": "^1.3.0",
+        "tailwindcss-scoped-groups": "^2.0.0"
+    },
+    "devDependencies": {
+        "@types/cookie": "^0.5.1",
+        "@types/node": "18.0.0",
+        "@types/react": "18.0.14",
+        "@types/react-dom": "18.0.5",
+        "@types/validator": "^13.7.3",
+        "autoprefixer": "^10.4.7",
+        "eslint": "8.18.0",
+        "eslint-config-next": "12.2.0",
+        "eslint-config-prettier": "^8.5.0",
+        "postcss": "^8.4.14",
+        "prettier": "2.7.1",
+        "tailwindcss": "^3.1.4",
+        "typescript": "4.7.4"
+    }
 }
