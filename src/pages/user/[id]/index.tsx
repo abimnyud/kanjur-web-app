@@ -185,7 +185,9 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         `api/transactions?filters[student_id]=${id}`,
     ];
 
-    let requests = urls.map((url) => fetch(`${process.env.VERCEL_URL}/${url}`));
+    let requests = urls.map((url) =>
+        fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/${url}`)
+    );
 
     let [userData, productsData, transactionsData] = await Promise.all(
         requests

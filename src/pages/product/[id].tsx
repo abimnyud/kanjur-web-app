@@ -201,7 +201,9 @@ const ProductPage: LayoutPage<any> = ({ productData }) => {
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     const { id }: any = params;
-    const res: any = await fetch(`${process.env.VERCEL_URL}/api/product/${id}`);
+    const res: any = await fetch(
+        `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/product/${id}`
+    );
     const isFound = res.status === 200;
     const data = await res.json();
 

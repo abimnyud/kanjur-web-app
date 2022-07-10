@@ -54,7 +54,9 @@ const Home: LayoutPage<Props> = ({ productsData, transactionsData }) => {
 export const getServerSideProps: GetServerSideProps = async () => {
     const urls: string[] = ['api/products', 'api/transactions'];
 
-    let requests = urls.map((url) => fetch(`${process.env.VERCEL_URL}/${url}`));
+    let requests = urls.map((url) =>
+        fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/${url}`)
+    );
 
     let [productsData, transactionsData] = await Promise.all(requests);
     productsData = await productsData.json();
