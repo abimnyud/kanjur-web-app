@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic';
 import MainLayout from '@components/Layout/MainLayout';
 import ProductGallery from '@components/Product/ProductGallery';
 import ResponseData from '@/types/ResponseData';
+import MyHead from '@components/Shared/MyHead';
 const RecentActivity = dynamic(
     () => import('@components/Home/RecentActivity'),
     { ssr: false }
@@ -18,20 +19,35 @@ interface Props {
 
 const Home: LayoutPage<Props> = ({ productsData, transactionsData }) => {
     const isMobile = useIsMobile();
+    const { meta: transactionsDataMeta } = transactionsData;
 
     return (
-        <div className="flex flex-row w-full gap-12 h-full pt-16 lg:pt-0 pb-52 lg:pb-16">
-            {/* <h1 className="heading">Home</h1> */}
-            <div className="w-full xl:w-4/6 flex flex-col items-center gap-16">
-                {productsData && <ProductGallery data={productsData} />}
-            </div>
-
-            {!isMobile && (
-                <div className="h-fit hidden xl:block xl:w-2/6">
-                    <RecentActivity data={transactionsData} />
+        <>
+            <MyHead
+                title="Kanjur - Kantin Kejujuran"
+                description="Jujur itu indah"
+                url=""
+                image=""
+                type="website"
+                alt="Kanjur website Thumbnail"
+            />
+            <div className="flex flex-row w-full gap-12 h-full pt-16 lg:pt-0 pb-52 lg:pb-16">
+                {/* <h1 className="heading">Home</h1> */}
+                <div
+                    className={`w-full ${
+                        transactionsDataMeta.total !== 0 ? 'xl:w-4/6' : ''
+                    } flex flex-col items-center gap-16`}
+                >
+                    {productsData && <ProductGallery data={productsData} />}
                 </div>
-            )}
-        </div>
+
+                {!isMobile && transactionsDataMeta.total !== 0 && (
+                    <div className="h-fit hidden xl:block xl:w-2/6">
+                        <RecentActivity data={transactionsData} />
+                    </div>
+                )}
+            </div>
+        </>
     );
 };
 

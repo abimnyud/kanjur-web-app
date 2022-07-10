@@ -32,7 +32,7 @@ const ProductGallery: FC<Props> = ({ data: productsData }: Props) => {
 
     return (
         <div className="flex flex-col gap-16 w-full items-center">
-            <div className="grid grid-cols-2 gap-4 md:gap-6 md:grid-cols-3 xl:grid-cols-4">
+            <div className="grid grid-cols-2 gap-4 w-full md:gap-6 md:grid-cols-3 xl:grid-cols-4">
                 {data.map((data: Product) => (
                     <ProductCard key={`product-${data.id}`} data={data} />
                 ))}
@@ -65,6 +65,8 @@ const ProductGallery: FC<Props> = ({ data: productsData }: Props) => {
                         <span>Muat lebih banyak</span>
                     )}
                 </button>
+            ) : meta.total === 0 ? (
+                <span className="text-sm">Belum ada produk.</span>
             ) : (
                 <span className="text-sm">Kamu telah sampai di bawah!</span>
             )}

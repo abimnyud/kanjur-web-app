@@ -156,10 +156,10 @@ CREATE TABLE cart_links (
 */
 
 const db = new Sequelize({
-    host: process.env.DB_HOST,
-    database: process.env.DB_NAME,
-    username: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
+    host: process.env.POSTGRES_HOST,
+    database: process.env.POSTGRES_DB,
+    username: process.env.POSTGRES_USER,
+    password: process.env.POSTGRES_PASSWORD,
     dialect: 'postgres',
     define: {
         freezeTableName: true,

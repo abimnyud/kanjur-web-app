@@ -5,7 +5,7 @@ const Balance: FC<any> = ({ data }) => {
     return (
         <div className="balance-top-bar">
             <span className="text-sm font-medium">Kas Kantin</span>
-            {data ? (
+            {data >= 0 ? (
                 <div className="flex gap-2 items-center">
                     <span className="text-lg font-semibold">
                         {currency.format(Number(data))}
