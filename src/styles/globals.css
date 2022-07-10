@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    * {
+        @apply scroll-smooth;
+    }
+
+    html {
+        font-family: Poppins;
+        @apply text-dark-500;
+    }
+
+    body {
+        @apply bg-light-200 antialiased;
+    }
+
+    main {
+        @apply px-4 pt-4 w-full lg:pt-32 mb-20 lg:mb-0 lg:pr-12 lg:ml-60 gap-8 h-full lg:h-auto flex flex-col -z-0;
+    }
+
+    h1 {
+        @apply text-2xl lg:text-5xl;
+    }
+
+    h4 {
+        @apply text-lg lg:text-xl;
+    }
+}
+
+@layer components {
+    .nav-link {
+        @apply transition flex flex-col lg:flex-row grow justify-center items-center lg:justify-start gap-1 lg:gap-6 lg:mx-4 lg:my-2 lg:rounded-xl py-4 lg:py-4 px-6;
+    }
+
+    .nav-link:hover {
+        @apply lg:bg-blue-0 text-blue-100;
+    }
+
+    .nav-link.active {
+        @apply lg:bg-blue-0 text-blue-100;
+    }
+
+    .nav-link p {
+        @apply text-xs lg:text-base text-gray-100 font-medium md:font-semibold;
+    }
+
+    .nav-link:hover p {
+        @apply text-blue-100;
+    }
+
+    .nav-link.active p {
+        @apply text-blue-100;
+    }
+
+    .nav-icon {
+        @apply transition h-6;
+    }
+
+    .nav-icon.active {
+        @apply fill-blue-100;
+    }
+
+    .heading {
+        @apply text-4xl font-bold;
+    }
+
+    .top-bar-button {
+        @apply rounded-full px-4 py-2 items-center h-fit w-fit hover:cursor-pointer font-semibold transition justify-center flex text-center;
+    }
+
+    .btn-light-blue {
+        @apply flex transition rounded-full px-4 py-2 justify-center items-center w-fit cursor-pointer font-semibold bg-blue-0 text-blue-100 hover:bg-blue-50;
+    }
+
+    .btn-dark-blue {
+        @apply flex transition rounded-full px-4 py-2 justify-center items-center w-fit cursor-pointer font-semibold bg-blue-100 text-light-100 hover:bg-blue-500;
+    }
+
+    .basic-input {
+        @apply flex flex-col py-2 px-4 border-2 border-gray-100 rounded-lg w-64 xl:w-64;
+    }
+
+    .profile-pop-up {
+        @apply flex flex-col z-50 absolute overflow-hidden bg-light-100 shadow-md rounded-xl top-14 md:top-12 right-0;
+    }
+
+    .profile-pop-up li {
+        @apply transition border-b-2 border-light-200 cursor-pointer;
+    }
+
+    .profile-pop-up li:nth-last-child(1) {
+        @apply border-none;
+    }
+
+    .product-card-title {
+        @apply font-semibold text-sm lg:text-base text-ellipsis overflow-hidden text-gray-500 max-h-10 lg:max-h-12;
+    }
+
+    .product-card-price {
+        @apply text-xs md:text-lg font-semibold text-blue-100;
+    }
+
+    .recent-activity-box {
+        @apply bg-light-100 rounded-xl h-full p-8 flex flex-col gap-4;
+    }
+
+    .recent-transactions {
+        @apply flex flex-col overflow-y-hidden;
+        min-width: 500px;
+    }
+
+    .recent-transactions li {
+        @apply flex w-full items-center;
+    }
+
+    .balance-top-bar {
+        @apply flex flex-col;
+    }
+
+    .profile-data {
+        @apply flex flex-col items-center gap-8;
+    }
+
+    .user-data-header {
+        @apply flex flex-row justify-around bg-light-100 rounded-lg;
+    }
+
+    .user-data-header a {
+        @apply text-sm lg:text-base w-1/4 cursor-pointer text-center  border-blue-100 py-2 transition;
+    }
+
+    .user-data-header a.active {
+        @apply border-b-2 text-blue-500;
+    }
+
+    .user-info-skeleton {
+        @apply flex flex-col justify-center items-center gap-2 px-[3.4rem] py-[3.6rem] rounded-xl bg-gray-0 animate-pulse;
+    }
+
+    .cart-products {
+        @apply flex flex-col;
+    }
+
+    .cart-products li {
+        @apply flex w-full border-b border-gray-0 py-4;
+    }
+
+    .cart-products li:nth-last-child(1) {
+        @apply border-none;
+    }
+
+    .checkout-products {
+        @apply flex flex-col w-full overflow-scroll pb-24;
+    }
+
+    .checkout-products li {
+        @apply flex w-full py-4;
+    }
+
+    input[type='file'] {
+    }
+}
