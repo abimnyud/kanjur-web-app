@@ -20,7 +20,7 @@ const MyHead: FC<any> = ({ title, description, url, type, image, alt }) => {
                 property="og:url"
                 content={`https://compfest-screening.abimanyu.co/${url}`}
             />
-            <meta property="og:site_name" content="Shafira Cake" />
+            <meta property="og:site_name" content="Kantin Kejujuran " />
             <meta
                 property="og:image"
                 content={
