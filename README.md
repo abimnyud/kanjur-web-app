@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+> Due to error on Vercel, i've deployed a new one on Cloud Run, please check https://compfest-screening.abimanyu.co or https://kanjur-web-app-mgvpgwbiba-uc.a.run.app/
+>
+> It's just an error on Vercel serverless function deployment, it runs fine on local or Docker
 
 ## Getting Started
 
@@ -12,4 +14,4 @@ npm install && npm run dev
 yarn install && yarn dev
 ```
 
-or, install Docker and run `docker-compose up`
+or, run with Docker using `docker-compose up`
