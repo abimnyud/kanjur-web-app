@@ -15,7 +15,7 @@ const ProductCard: React.FC<Props> = ({ data }: Props) => {
     const { isAuthenticated }: any = useAuth();
     const [loading, setLoading] = useState(false);
 
-    let inCart: number[] = cartData.map((item: any) => item.id);
+    let inCart: number[] = cartData?.map((item: any) => item.id) || [];
 
     const handleClick = async (id: number): Promise<void> => {
         setLoading(true);

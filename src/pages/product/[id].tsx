@@ -21,7 +21,7 @@ const ProductPage: LayoutPage<any> = ({ productData }) => {
     const time = moment(d).format('LLLL');
     const memberSince = moment(d2).format('LL');
 
-    let inCart: number[] = cartData.map((item: any) => item.id);
+    let inCart: number[] = cartData?.map((item: any) => item.id) || [];
 
     const handleClick = async (id: number): Promise<void> => {
         setLoading(true);
@@ -51,6 +51,7 @@ const ProductPage: LayoutPage<any> = ({ productData }) => {
                                 <Image
                                     src={data.image}
                                     layout="fill"
+                                    objectFit="cover"
                                     alt={data.name}
                                 />
                             </div>
