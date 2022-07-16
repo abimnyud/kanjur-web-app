@@ -239,7 +239,7 @@ const ProductModal: FC<any> = ({ setIsOpen }) => {
                                             />
                                         </svg>
                                     ) : (
-                                        <span>Bayar</span>
+                                        <span>Jual</span>
                                     )}
                                 </button>
                             </div>
