@@ -83,7 +83,7 @@ const Report: React.FC<any> = ({ transactionsData }) => {
                                                 } rounded-full px-2 py-1 text-xs select-none font-semibold text-center justify-center w-fit`}
                                             >
                                                 {isBuy
-                                                    ? 'Buy'
+                                                    ? 'Beli'
                                                     : isDeposit
                                                     ? 'Setor'
                                                     : 'Tarik'}
