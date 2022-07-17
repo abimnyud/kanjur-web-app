@@ -62,7 +62,7 @@ export class User extends UserModel {
         attributes: ['balance'],
     },
     recent: {
-        attributes: ['id', 'deposit', 'withdraw', 'created_at'],
+        attributes: ['id', 'total_price', 'deposit', 'withdraw', 'created_at'],
         include: [
             { model: User, as: 'student', attributes: ['student_id', 'name'] },
         ],
@@ -166,6 +166,7 @@ const db = new Sequelize({
     },
     logging: process.env.NODE_ENV === 'development' ? console.log : false,
     models: [User, Product, Transaction, Cart],
+    timezone:"+07:00"
 });
 
 export default db;

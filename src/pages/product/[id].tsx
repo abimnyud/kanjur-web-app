@@ -16,8 +16,8 @@ const ProductPage: LayoutPage<any> = ({ productData }) => {
     const [loading, setLoading] = useState(false);
 
     moment.locale('id');
-    const d = moment(data.updated_at).add(7, 'hours');
-    const d2 = moment(data.seller.created_at).add(7, 'hours');
+    const d = moment(data.updated_at)
+    const d2 = moment(data.seller.created_at)
     const time = moment(d).format('LLLL');
     const memberSince = moment(d2).format('LL');
 

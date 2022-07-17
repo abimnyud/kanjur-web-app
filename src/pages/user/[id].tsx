@@ -168,7 +168,7 @@ const ProfilePage: LayoutPage<Props> = ({
                             <div>Loading...</div>
                         )
                     ) : (
-                        <TransactionHistory data={transactionsData} />
+                        isAuthenticated ? <TransactionHistory data={transactionsData} /> : <span className='w-full text-center pt-12'>Kamu harus login untuk melihat data transaksi anggota</span> 
                     )}
                 </div>
             </div>

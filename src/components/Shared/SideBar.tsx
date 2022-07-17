@@ -14,10 +14,10 @@ const SideBar: React.FC<any> = ({ userData }) => {
                 <Link href="/">
                     <a
                         className={`nav-link group ${
-                            router.pathname === '/' ? 'active' : ''
+                            router.pathname === '/' || router.pathname.includes("product") ? 'active' : ''
                         }`}
                     >
-                        {router.pathname === '/' ? (
+                        {router.pathname === '/' || router.pathname.includes("product") ? (
                             <svg
                                 className={`nav-icon active`}
                                 viewBox="0 0 20 20"

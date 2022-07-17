@@ -29,10 +29,10 @@ const RecentActivity: React.FC<Props> = ({ data }: Props) => {
                 </li>
                 {data.data.map((transaction: any) => {
                     const isDeposit = Number(transaction.deposit) !== 0;
+                    const isBuy = Number(transaction.total_price) !== 0;
 
                     moment.locale('id');
-                    const d = moment(transaction.created_at).add(7, 'hours');
-                    const time = moment(d).fromNow();
+                    const time = moment(transaction.created_at).fromNow();
                     return (
                         <li
                             key={`transaction-${transaction.id}`}
@@ -48,12 +48,11 @@ const RecentActivity: React.FC<Props> = ({ data }: Props) => {
                             <div className="w-1/3">
                                 <p
                                     className={`${
-                                        isDeposit
-                                            ? 'text-green-100 bg-green-0'
-                                            : 'text-red-100 bg-red-0'
+                                        isBuy ? 'text-blue-500 bg-blue-0' 
+                                        : isDeposit ? 'text-green-100 bg-green-0' : 'text-red-100 bg-red-0'
                                     } rounded-full px-2 py-1 text-xs select-none font-semibold text-center justify-center w-fit`}
                                 >
-                                    {isDeposit ? 'Setor' : 'Tarik'}
+                                    {isBuy? 'Beli' : isDeposit ? 'Setor' : 'Tarik'}
                                 </p>
                             </div>
                             <p className="text-gray-200 text-sm w-1/3">

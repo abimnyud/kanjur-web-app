@@ -5,8 +5,7 @@ import 'moment/locale/id';
 
 const CheckoutSuccess: FC<any> = ({ transactionData }) => {
     moment.locale('id');
-    const d = moment(transactionData.created_at).add(7, 'hours');
-    const time = moment(d).format('LLL');
+    const time = moment(transactionData.created_at).format('LLL');
     return (
         <div className="flex flex-col gap-12 w-full h-full justify-center items-center">
             <div className="flex flex-col gap-4 items-center">

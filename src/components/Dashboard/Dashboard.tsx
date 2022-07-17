@@ -59,11 +59,7 @@ const Report: React.FC<any> = ({ transactionsData }) => {
                                     Number(transaction.total_price) !== 0;
 
                                 moment.locale('id');
-                                const d = moment(transaction.created_at).add(
-                                    7,
-                                    'hours'
-                                );
-                                const time = moment(d).fromNow();
+                                const time = moment(transaction.created_at).fromNow();
                                 return (
                                     <li
                                         key={`transaction-${id}`}
