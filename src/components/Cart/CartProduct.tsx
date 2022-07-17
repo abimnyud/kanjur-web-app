@@ -62,10 +62,10 @@ const CartProduct: FC<any> = ({ data, sold = false }) => {
                             </a>
                         </Link>
                         <a
-                            onClick={() => {
+                            onClick={!loading ? async () => {
                                 setLoading(true);
-                                remove(data.id);
-                            }}
+                                await remove(data.id);
+                            } : undefined}
                             className="p-3 bg-light-200 hover:bg-red-0 rounded-full cursor-pointer group transition"
                         >
                             {loading ? (

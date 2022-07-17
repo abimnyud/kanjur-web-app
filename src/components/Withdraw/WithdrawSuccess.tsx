@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 
-const WithdrawSuccess: FC<any> = ({ setIsOpen }) => {
+const WithdrawSuccess: FC<any> = ({ handleClose }) => {
     return (
         <div
             onClick={(e) => {
@@ -11,7 +11,7 @@ const WithdrawSuccess: FC<any> = ({ setIsOpen }) => {
             <a className="absolute top-0 right-0 p-4 group cursor-pointer">
                 <svg
                     className="fill-gray-200 h-4 group-hover:fill-dark-500 transition"
-                    onClick={() => setIsOpen(false)}
+                    onClick={async () => handleClose()}
                     viewBox="0 0 14 14"
                     xmlns="http://www.w3.org/2000/svg"
                 >

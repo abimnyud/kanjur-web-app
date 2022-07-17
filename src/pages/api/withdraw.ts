@@ -38,20 +38,22 @@ const postProductHandler = async (
             student_id
         );
 
+        const cashflow = Number(userData.revenue) + Number(userData.deposit) - Number(userData.withdraw);
         const isFlagged =
-            withdraw_amount >
-                userData.revenue + userData.deposit - userData.withdraw ||
-            userData.debt !== 0;
+            withdraw_amount > cashflow || Number(userData.debt) !== 0;
 
         if (isFlagged) {
-            // increment withdar and debt
+            // increment withdraw and debt
             await userData.increment({
                 withdraw: withdraw_amount,
-                debt: withdraw_amount,
+                debt: Math.abs(withdraw_amount - cashflow),
             });
-
-            await userData.save();
+        } else {
+            await userData.increment({
+                withdraw: withdraw_amount
+            });
         }
+        await userData.save();
 
         // Add to transactions
         const transactionData = await Transaction.create({

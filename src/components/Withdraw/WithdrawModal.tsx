@@ -2,32 +2,43 @@ import { FC, useState } from 'react';
 import { useIsomorphicEffect } from '@hooks/useIsomorphicEffect';
 import WithdrawLoading from '@components/Withdraw/WithdrawLoading';
 import WithdrawSuccess from '@components/Withdraw/WithdrawSuccess';
-import Router from 'next/router';
+import Router, { useRouter } from 'next/router';
 
 const WithdrawModal: FC<any> = ({ setIsOpen }) => {
     const [amount, setAmount] = useState(0);
     const [error, setError] = useState(false);
+    const [errorResponse, setErrorResponse] = useState("");
     const [loading, setLoading] = useState(false);
     const [status, setStatus] = useState(false);
     const isomorphicEffect = useIsomorphicEffect();
+    const router = useRouter();
 
     const handleChange = (e: any) => {
         e.preventDefault();
         setAmount(Number(e.target.value));
     };
 
-    const handleDeposit = async (): Promise<void> => {
+    const handleWithdraw = async (): Promise<void> => {
         setLoading(true);
-        let res = await fetch(`/api/withdraw?amount=${Number(amount)}`, {
+        let res: any = await fetch(`/api/withdraw?amount=${Number(amount)}`, {
             method: 'POST',
         });
         if (res.status === 401) Router.reload();
 
         res = await res.json();
 
-        if (res.status) setStatus(true);
+        if (res.status) {
+            setStatus(true);
+        } else {
+            setErrorResponse(res.message);
+        }
         setLoading(false);
     };
+
+    const handleClose = async (): Promise<void> => {
+        setIsOpen(false)
+        if (status) Router.reload();
+    }
 
     isomorphicEffect(() => {
         if (amount < 500) {
@@ -39,10 +50,12 @@ const WithdrawModal: FC<any> = ({ setIsOpen }) => {
 
     return (
         <div
-            onClick={() => setIsOpen(false)}
+            onClick={async () => handleClose()}
             className="flex fixed z-50 inset-0 h-screen justify-center items-center bg-dark-500 bg-opacity-50"
         >
-            {!status ? (
+            {loading ? (
+                <WithdrawLoading />
+            ) : !status ? (
                 <div
                     onClick={(e) => {
                         e.stopPropagation();
@@ -80,9 +93,9 @@ const WithdrawModal: FC<any> = ({ setIsOpen }) => {
                                     } rounded-lg w-full p-4 text-lg font-semibold`}
                                 />
                             </div>
-                            {error && (
+                            {error || errorResponse && (
                                 <span className="text-xs lg:text-sm text-red-100">
-                                    *Minimal tarik Rp500,00
+                                    {errorResponse ? errorResponse : "*Minimal tarik Rp500,00"}
                                 </span>
                             )}
                         </div>
@@ -95,8 +108,8 @@ const WithdrawModal: FC<any> = ({ setIsOpen }) => {
                             Batal
                         </button>
                         <button
-                            onClick={() => {
-                                error ? null : handleDeposit();
+                            onClick={async () => {
+                                error ? null : await handleWithdraw();
                             }}
                             className={`btn-dark-blue ${
                                 error
@@ -108,10 +121,8 @@ const WithdrawModal: FC<any> = ({ setIsOpen }) => {
                         </button>
                     </div>
                 </div>
-            ) : !loading ? (
-                <WithdrawSuccess setIsOpen={setIsOpen} />
             ) : (
-                <WithdrawLoading />
+                <WithdrawSuccess handleClose={handleClose} />
             )}
         </div>
     );

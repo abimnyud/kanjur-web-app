@@ -61,11 +61,14 @@ export class User extends UserModel {
         limit: 1,
         attributes: ['balance'],
     },
-    recent: {
+    recentActivity: {
         attributes: ['id', 'total_price', 'deposit', 'withdraw', 'created_at'],
         include: [
             { model: User, as: 'student', attributes: ['student_id', 'name'] },
         ],
+    },
+    recentUserTransactions: {
+        attributes: ['id', 'total_price', 'deposit', 'withdraw', 'flag', 'created_at'],
     },
     full: {
         attributes: [

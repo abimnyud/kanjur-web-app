@@ -189,7 +189,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     const urls: string[] = [
         `api/user/${id}?scope=public`,
         `api/products?filters[seller_id]=${id}`,
-        `api/transactions?filters[student_id]=${id}`,
+        `api/transactions?scope=recentUserTransactions&filters[student_id]=${id}`,
     ];
 
     let requests = urls.map((url) =>

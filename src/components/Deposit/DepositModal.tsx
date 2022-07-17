@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 import { useIsomorphicEffect } from '@hooks/useIsomorphicEffect';
 import DepositLoading from '@components/Deposit/DepositLoading';
 import DepositSuccess from '@components/Deposit/DepositSuccess';
-import Router from 'next/router';
+import Router, { useRouter } from 'next/router';
 
 const DepositModal: FC<any> = ({ setIsOpen }) => {
     const [amount, setAmount] = useState(0);
@@ -10,6 +10,7 @@ const DepositModal: FC<any> = ({ setIsOpen }) => {
     const [loading, setLoading] = useState(false);
     const [status, setStatus] = useState(false);
     const isomorphicEffect = useIsomorphicEffect();
+    const router = useRouter();
 
     const handleChange = (e: any) => {
         e.preventDefault();
@@ -29,6 +30,11 @@ const DepositModal: FC<any> = ({ setIsOpen }) => {
         setLoading(false);
     };
 
+    const handleClose = async (): Promise<void> => {
+        setIsOpen(false)
+        if (status) Router.reload();
+    }
+
     isomorphicEffect(() => {
         if (amount < 500) {
             setError(true);
@@ -39,10 +45,12 @@ const DepositModal: FC<any> = ({ setIsOpen }) => {
 
     return (
         <div
-            onClick={() => setIsOpen(false)}
+            onClick={async () => handleClose()}
             className="flex fixed z-50 inset-0 h-screen justify-center items-center bg-dark-500 bg-opacity-50"
         >
-            {!status ? (
+            {loading ? (
+                <DepositLoading />
+            ) : !status ? (
                 <div
                     onClick={(e) => {
                         e.stopPropagation();
@@ -108,10 +116,8 @@ const DepositModal: FC<any> = ({ setIsOpen }) => {
                         </button>
                     </div>
                 </div>
-            ) : !loading ? (
-                <DepositSuccess setIsOpen={setIsOpen} />
             ) : (
-                <DepositLoading />
+                <DepositSuccess handleClose={handleClose} />
             )}
         </div>
     );
