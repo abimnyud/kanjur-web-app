@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 import { useIsomorphicEffect } from '@hooks/useIsomorphicEffect';
 import WithdrawLoading from '@components/Withdraw/WithdrawLoading';
 import WithdrawSuccess from '@components/Withdraw/WithdrawSuccess';
-import Router, { useRouter } from 'next/router';
+import Router from 'next/router';
 
 const WithdrawModal: FC<any> = ({ setIsOpen }) => {
     const [amount, setAmount] = useState(0);
@@ -11,7 +11,6 @@ const WithdrawModal: FC<any> = ({ setIsOpen }) => {
     const [loading, setLoading] = useState(false);
     const [status, setStatus] = useState(false);
     const isomorphicEffect = useIsomorphicEffect();
-    const router = useRouter();
 
     const handleChange = (e: any) => {
         e.preventDefault();

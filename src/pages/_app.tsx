@@ -2,6 +2,7 @@ import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import type { ReactNode } from 'react';
 import type { NextPage } from 'next';
+import { useRouter } from 'next/router';
 import { AuthProvider } from '@contexts/AuthContext';
 import { IsMobileProvider } from '@contexts/MobileContext';
 import { CartProvider } from '@contexts/CartContext';
@@ -20,12 +21,13 @@ const defaultGetLayout: GetLayout = (page: ReactNode): ReactNode => page;
 
 function MyApp({ Component, pageProps }: MyAppProps) {
     const getLayout = Component.getLayout ?? defaultGetLayout;
+    const router = useRouter()
 
     return (
         <AuthProvider>
             <CartProvider>
                 <IsMobileProvider>
-                    {getLayout(<Component {...pageProps} />)}
+                    {getLayout(<Component {...pageProps} key={router.asPath}/>)}
                 </IsMobileProvider>
             </CartProvider>
         </AuthProvider>
