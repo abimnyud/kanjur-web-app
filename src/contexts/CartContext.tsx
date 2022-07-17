@@ -54,7 +54,6 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     };
 
     const remove = async (id: number): Promise<any> => {
-        setLoading(true);
         let res: any = await fetch(`/api/cart/remove?product_id=${id}`, {
             method: 'POST',
         });
@@ -68,7 +67,6 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
             });
             setCartData(newCartData);
         }
-        setLoading(false);
     };
 
     return (

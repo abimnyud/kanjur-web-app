@@ -31,7 +31,7 @@ const LoginModal: React.FC<any> = ({ setIsLoginModalOpen }: any) => {
                 onClick={(e) => e.stopPropagation()}
                 className="flex flex-col bg-light-100 rounded-xl p-8 w-5/6 md:w-2/5 xl:w-1/4 justify-center items-center gap-6"
             >
-                <h1 className="text-xl font-semibold">Masuk ke akun anda</h1>
+                <h1 className="text-xl font-semibold">Masuk ke akun kamu</h1>
                 <form
                     onSubmit={handleSubmit}
                     className="flex flex-col justify-center items-center gap-4"

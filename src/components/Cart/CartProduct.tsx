@@ -1,11 +1,13 @@
-import React from 'react';
+import { FC, useState } from 'react';
 import { currency } from '@lib/currencyFormatter';
 import Image from 'next/image';
 import { useCart } from '@contexts/CartContext';
 import Link from 'next/link';
 
-const CartProduct: React.FC<any> = ({ data, sold = false }) => {
-    const { remove, loading }: any = useCart();
+
+const CartProduct: FC<any> = ({ data, sold = false }) => {
+    const { remove }: any = useCart();
+    const [loading, setLoading] = useState(false);
 
     return (
         <li>
@@ -60,7 +62,10 @@ const CartProduct: React.FC<any> = ({ data, sold = false }) => {
                             </a>
                         </Link>
                         <a
-                            onClick={() => remove(data.id)}
+                            onClick={() => {
+                                setLoading(true);
+                                remove(data.id);
+                            }}
                             className="p-3 bg-light-200 hover:bg-red-0 rounded-full cursor-pointer group transition"
                         >
                             {loading ? (
