@@ -94,7 +94,7 @@ const LoginModal: React.FC<any> = ({ setIsRegisterModalOpen }: any) => {
                                 />
                             </svg>
                         ) : (
-                            'Masuk'
+                            'Daftar'
                         )}
                     </button>
                 </form>
