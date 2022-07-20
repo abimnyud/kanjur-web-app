@@ -33,7 +33,7 @@ const DashboardPage: LayoutPage<any> = ({ transactionsData }) => {
 
 export const getServerSideProps: GetServerSideProps = async () => {
     let res = await fetch(
-        `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/transactions?scope=full&limit=10`
+        `${process.env.URL}/api/transactions?scope=full&limit=10`
     ).then(async (r) => await r.json());
 
     return {

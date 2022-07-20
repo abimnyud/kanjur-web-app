@@ -55,7 +55,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     const urls: string[] = ['api/products', 'api/transactions'];
 
     let requests = urls.map((url) =>
-        fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/${url}`)
+        fetch(`${process.env.URL}/${url}`)
     );
 
     let [productsData, transactionsData] = await Promise.all(requests);

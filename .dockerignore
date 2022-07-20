@@ -1,6 +1,11 @@
-node_modules
-.next
+.git
+.gitignore
+.next/
 .swc
-.env
+.dockerignore
+Dockerfile
+docker-compose.yml
+node_modules/
+nginx/
 .env.local
 .env.production

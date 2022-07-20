@@ -1,17 +1,19 @@
 FROM node:16-alpine
 
-# wait for database to be ready
-ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.9.0/wait /wait
-RUN chmod +x /wait
-
-WORKDIR /app
-
-COPY package.json .
-
-RUN npm install
-
+WORKDIR /usr/app
+COPY package.json yarn.lock ./
+RUN yarn install
 COPY . .
 
+# Build app
+RUN npm run build
+
+# Expose the listening port
 EXPOSE 3000
 
-CMD /wait && npm run build && npm run start
+# Run container as non-root (unprivileged) user
+# The node user is provided in the Node.js Alpine base image
+USER node
+
+# Run npm start script when container starts
+CMD [ "npm", "start" ]
