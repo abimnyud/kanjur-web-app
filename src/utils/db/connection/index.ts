@@ -9,6 +9,7 @@ import {
     ForeignKey,
     Column,
 } from 'sequelize-typescript';
+import * as pg from 'pg';
 import UserModel from '@models/user.model';
 import ProductModel from '@models/product.model';
 import TransactionModel from '@models/transaction.model';
@@ -164,6 +165,7 @@ const db = new Sequelize({
     username: process.env.POSTGRES_USER,
     password: process.env.POSTGRES_PASSWORD,
     dialect: 'postgres',
+    dialectModule: pg,
     define: {
         freezeTableName: true,
     },
