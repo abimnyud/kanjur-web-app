@@ -1,6 +1,4 @@
-> Due to error on Vercel, i've deployed a new one on Cloud Run, please check https://compfest-screening.abimanyu.co or https://kanjur-web-app-mgvpgwbiba-uc.a.run.app/
->
-> It's just an error on Vercel serverless function deployment, it runs fine on local or Docker
+> Deployment kanjur-web-app.vercel.app/
 
 ## Getting Started
 
